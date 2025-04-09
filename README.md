@@ -3,7 +3,7 @@
 ## Features
 - Real-time English article processing
 - Automatic word filtering and deduplication
-- Frequency statistics and CSV export
+- 支持导出JSON/txt格式的分析结果
 - English interface with element-plus
 
 ## Usage

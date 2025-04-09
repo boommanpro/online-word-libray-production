@@ -14,8 +14,8 @@
             <div class="p-4 h-full flex flex-col">
                 <div class="flex justify-between items-center mb-4">
                     <h2 class="text-xl font-bold">Word Dictionary</h2>
-                    <el-button @click="exportCSV">
-                        Export CSV
+                    <el-button @click="exportTXT">
+                        Export TXT
                     </el-button>
                 </div>
                 <el-table :data="processedWords" height="calc(100% - 48px)" class="flex-1">
@@ -54,16 +54,14 @@ const processArticle = () => {
         .sort((a, b) => b.frequency - a.frequency);
 };
 
-const exportCSV = () => {
-    const csvContent = 'Word,Frequency\n' +
-        processedWords.value.map(row =>
-            `${row.word},${row.frequency}`
-        ).join('\n');
-
-    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+const exportTXT = () => {
+    const txtContent = processedWords.value.map(row => row.word).join('\n');
+    const blob = new Blob([txtContent], { type: 'text/plain;charset=utf-8;' });
     const link = document.createElement('a');
+    const now = new Date();
+    const timestamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, '0')}${String(now.getDate()).padStart(2, '0')}${String(now.getHours()).padStart(2, '0')}${String(now.getMinutes()).padStart(2, '0')}`;
     link.href = URL.createObjectURL(blob);
-    link.download = 'vocabulary-list.csv';
+    link.download = `vocabulary-list-${timestamp}.txt`;
     link.click();
 };
 </script>

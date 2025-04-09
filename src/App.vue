@@ -7,7 +7,7 @@ import WordConvert from './components/WordConvert.vue';
 
 <template>
   <div>
-
+    <WordConvert />
   </div>
 </template>
 
