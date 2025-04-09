@@ -25,7 +25,7 @@ jobs:
 
       - name: Install dependencies And Build
         run: pnpm install --frozen-lockfile # 替代 npm ci
-      - run: pnpm run build:gh-pages # 替换 npm 命令
+      - run: pnpm run build # 替换 npm 命令
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4.3.4
